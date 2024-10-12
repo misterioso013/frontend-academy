@@ -2,7 +2,7 @@ import { Award, Star, Zap, Trophy, Target, TrendingUp } from 'lucide-react'
 
 export function GamificationSection() {
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 md:h-screen">
+    <section className="py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 md:h-screen overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center mb-16 text-white">
           Gamificação e Sistema de Progresso

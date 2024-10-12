@@ -86,12 +86,12 @@ export function StudentTestimonials() {
               </Card>
             </motion.div>
           </AnimatePresence>
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 -ml-4 md:-ml-8">
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 -ml-2 md:-ml-8">
             <Button variant="outline" size="icon" onClick={prevTestimonial} className="rounded-full bg-white dark:bg-gray-800 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700">
               <ChevronLeft className="h-6 w-6 text-gray-800 dark:text-gray-300" />
             </Button>
           </div>
-          <div className="absolute top-1/2 -translate-y-1/2 right-0 -mr-4 md:-mr-8">
+          <div className="absolute top-1/2 -translate-y-1/2 right-0 -mr-2 md:-mr-8">
             <Button variant="outline" size="icon" onClick={nextTestimonial} className="rounded-full bg-white dark:bg-gray-800 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700">
               <ChevronRight className="h-6 w-6 text-gray-800 dark:text-gray-300" />
             </Button>
