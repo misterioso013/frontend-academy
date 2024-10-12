@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { RefreshCw, Check, Sliders } from 'lucide-react'
 import { Slider } from "@/components/ui/slider"
 
@@ -10,9 +10,9 @@ function generateRandomColor() {
 
 function adjustColorBrightness(color: string, amount: number) {
   const hex = color.replace('#', '')
-  const r = parseInt(hex.substr(0, 2), 16)
-  const g = parseInt(hex.substr(2, 2), 16)
-  const b = parseInt(hex.substr(4, 2), 16)
+  const r = parseInt(hex.substring(0, 2), 16)
+  const g = parseInt(hex.substring(2, 4), 16)
+  const b = parseInt(hex.substring(4, 6), 16)
 
   const newR = Math.max(0, Math.min(255, r + amount))
   const newG = Math.max(0, Math.min(255, g + amount))
@@ -29,11 +29,7 @@ export function ColorPaletteGenerator() {
   const [saturation, setSaturation] = useState(100)
   const [brightness, setBrightness] = useState(0)
 
-  useEffect(() => {
-    generatePalette()
-  }, [baseColor, hueShift, saturation, brightness])
-
-  const generatePalette = () => {
+  const generatePalette = useCallback(() => {
     const newPalette = [
       adjustColorBrightness(baseColor, -100 + brightness),
       adjustColorBrightness(baseColor, -50 + brightness),
@@ -42,7 +38,11 @@ export function ColorPaletteGenerator() {
       adjustColorBrightness(baseColor, 100 + brightness),
     ]
     setPalette(newPalette)
-  }
+  }, [baseColor, brightness])
+
+  useEffect(() => {
+    generatePalette()
+  }, [baseColor, hueShift, saturation, brightness, generatePalette])
 
   const handleGenerateNewPalette = () => {
     setBaseColor(generateRandomColor())

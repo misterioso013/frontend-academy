@@ -24,7 +24,7 @@ export default function ToolsPage() {
         <div className="mt-8 bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Como usar esta paleta</h2>
           <ol className="list-decimal list-inside space-y-2 text-gray-700">
-            <li>Clique em "Gerar Nova Paleta" para criar uma nova combinação de cores.</li>
+            <li>Clique em &#34;Gerar Nova Paleta&#34; para criar uma nova combinação de cores.</li>
             <li>Use os controles deslizantes para ajustar a matiz, saturação e brilho da paleta.</li>
             <li>Clique em qualquer cor para copiá-la para a área de transferência.</li>
             <li>Use as cores em seu projeto de design ou desenvolvimento web.</li>

@@ -93,7 +93,7 @@ export default function ResourcesAndToolsPage() {
               <p className="text-gray-600 mb-6">{selectedTool.description}</p>
               <h4 className="font-semibold mb-2">Como usar:</h4>
               <ol className="list-decimal list-inside text-gray-700 mb-6">
-                <li>Clique no botão "Acessar" para abrir a ferramenta</li>
+                <li>Clique no botão &#34;Acessar&#34; para abrir a ferramenta</li>
                 <li>Siga as instruções na interface da ferramenta</li>
                 <li>Experimente diferentes opções e configurações</li>
                 <li>Copie ou exporte o resultado conforme necessário</li>

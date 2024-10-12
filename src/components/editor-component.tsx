@@ -14,7 +14,6 @@ import {
   emmetJSX,
   registerCustomSnippets,
 } from "emmet-monaco-es";
-import { m } from "framer-motion";
 
 interface EditorComponentProps {
   language: "html" | "css" | "javascript";
