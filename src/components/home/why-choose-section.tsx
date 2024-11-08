@@ -13,7 +13,7 @@ export function WhyChooseSection() {
       title: "Geradores Automatizados por IA",
       description: "Crie HTML, CSS e JavaScript instantaneamente com nossos geradores inteligentes. Economize tempo e aprenda com exemplos práticos gerados pela IA.",
       detail: "Nossa tecnologia de IA analisa as melhores práticas de codificação e gera exemplos personalizados para seu nível de habilidade, ajudando você a aprender e implementar código de qualidade mais rapidamente.",
-      link: "#",
+      link: "/tools",
       target_blank: false
     },
     {
@@ -21,7 +21,7 @@ export function WhyChooseSection() {
       title: "Aprendizado Gamificado",
       description: "Missões e desafios interativos que tornam o aprendizado divertido para qualquer idade. Ganhe pontos, suba de nível e desbloqueie conquistas.",
       detail: "Nosso sistema de gamificação foi projetado por especialistas em educação para manter você motivado e engajado. Complete desafios diários, participe de competições e acompanhe seu progresso em tempo real.",
-      link: "#",
+      link: "/dashboard",
       target_blank: false
     },
     {
@@ -29,7 +29,7 @@ export function WhyChooseSection() {
       title: "Suporte a Frameworks Modernos",
       description: "Aprenda a usar React, Vue, Next.js e Tailwind com exemplos práticos. Mantenha-se atualizado com as tecnologias mais recentes do mercado.",
       detail: "Oferecemos cursos especializados e projetos práticos para os frameworks mais populares, garantindo que você esteja sempre um passo à frente no mercado de trabalho.",
-      link: "#",
+      link: "/cursos",
       target_blank: false
     },
     {
@@ -53,7 +53,7 @@ export function WhyChooseSection() {
       title: "Certificações Reconhecidas",
       description: "Obtenha certificados validados pela indústria ao concluir nossos cursos. Impulsione sua carreira com credenciais respeitadas.",
       detail: "Nossas certificações são reconhecidas por empresas líderes em tecnologia e podem ser compartilhadas diretamente em seu perfil LinkedIn, aumentando suas chances de conseguir o emprego dos sonhos.",
-        link: "#",
+        link: "/cursos",
         target_blank: false
     },
     {
@@ -61,7 +61,7 @@ export function WhyChooseSection() {
       title: "Projetos do Mundo Real",
       description: "Aplique suas habilidades em projetos práticos que simulam desafios reais do mercado. Construa um portfólio impressionante enquanto aprende.",
       detail: "Trabalhamos com empresas parceiras para oferecer projetos baseados em casos reais, permitindo que você ganhe experiência prática e se destaque no mercado de trabalho.",
-        link: "#",
+        link: "/cursos",
         target_blank: false
     },
     {
@@ -69,8 +69,8 @@ export function WhyChooseSection() {
       title: "Suporte Personalizado",
       description: "Receba orientação individual de mentores experientes. Tire suas dúvidas e obtenha feedback personalizado sobre seus projetos.",
       detail: "Nossa equipe de mentores inclui profissionais experientes da indústria, prontos para oferecer orientação personalizada e ajudar você a superar desafios específicos em sua jornada de aprendizado.",
-      link: "#",
-      target_blank: false
+      link: "https://forum.vemser.tech",
+      target_blank: true
     },
   ]
 

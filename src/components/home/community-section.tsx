@@ -65,7 +65,7 @@ export function CommunitySection() {
           <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
             Faça parte de uma comunidade de desenvolvedores apaixonados, aprenda com os melhores e acelere sua carreira em front-end.
           </p>
-          <Link href="/register">
+          <Link href="/dashboard">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
                 Comece Agora Gratuitamente
             </Button>

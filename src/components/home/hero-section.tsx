@@ -12,14 +12,16 @@ export function Hero(){
             A plataforma interativa e gamificada para aprender HTML, CSS, JavaScript e os frameworks mais usados, de forma descomplicada.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up animation-delay-400">
-            <Link href="/login">
+            <Link href="/dashboard">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
                 Comece Agora
                 </Button>
             </Link>
-            <Button className="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-              Experimente um Gerador de Código
-            </Button>
+            <Link href="/tools">
+              <Button className="bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                Experimente um Gerador de Código
+              </Button>
+              </Link>
           </div>
         </div>
       </section>

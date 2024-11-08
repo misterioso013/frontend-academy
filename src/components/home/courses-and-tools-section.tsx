@@ -8,18 +8,19 @@ export function CoursesAndToolsSection() {
   const [activeTab, setActiveTab] = useState('courses')
 
   const courses = [
-    { icon: <Book className="h-6 w-6" />, title: "HTML Fundamentals", level: "Iniciante", duration: "4 semanas", rating: 4.8 },
-    { icon: <Palette className="h-6 w-6" />, title: "CSS Mastery", level: "Intermediário", duration: "6 semanas", rating: 4.9 },
-    { icon: <Code className="h-6 w-6" />, title: "JavaScript Avançado", level: "Avançado", duration: "8 semanas", rating: 4.7 },
-    { icon: <Layers className="h-6 w-6" />, title: "React Profissional", level: "Avançado", duration: "10 semanas", rating: 4.9 },
+    { icon: <Book className="h-6 w-6" />, title: "HTML Fundamentals", level: "Iniciante", duration: "4 semanas", rating: 4.8, link: "/cursos" },
+    { icon: <Palette className="h-6 w-6" />, title: "CSS Mastery", level: "Intermediário", duration: "6 semanas", rating: 4.9, link: "/cursos" },
+    { icon: <Code className="h-6 w-6" />, title: "JavaScript Avançado", level: "Avançado", duration: "8 semanas", rating: 4.7, link: "/cursos" },
+    { icon: <Layers className="h-6 w-6" />, title: "React Profissional", level: "Avançado", duration: "10 semanas", rating: 4.9, link: "/cursos"  },
   ]
 
   const tools = [
     { icon: <Box className="h-6 w-6" />, title: "Gerador de Layout", description: "Crie layouts responsivos com poucos cliques", link: "#" },
     { icon: <Code className="h-6 w-6" />, title: "Gerador de Componentes React", description: "Gere componentes React automaticamente", link: "#" },
     { icon: <Zap className="h-6 w-6" />, title: "Otimizador de CSS", description: "Otimize e limpe seu CSS automaticamente", link: "#" },
-    { icon: <Palette className="h-6 w-6" />, title: "Gerador de Paleta de Cores", description: "Crie paletas de cores harmoniosas para seus projetos", link: "#" },
+    { icon: <Palette className="h-6 w-6" />, title: "Gerador de Paleta de Cores", description: "Crie paletas de cores harmoniosas para seus projetos", link: "/tools/color-generator" },
     { icon: <Book className="h-6 w-6" />, title: "IDE Online", description: "Crie e edite arquivos HTML, CSS e JavaScript online", link: "/editor/web" },
+    { icon: <Book className="h-6 w-6" />, title: "React Playground", description: "Teste e experimente React sem configuração", link: "/editor/react" },
   ]
 
   return (

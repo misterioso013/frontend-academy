@@ -1,4 +1,6 @@
 import { Award, Star, Zap, Trophy, Target, TrendingUp } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '../ui/button'
 
 export function GamificationSection() {
   return (
@@ -75,9 +77,11 @@ export function GamificationSection() {
                   </div>
                 ))}
               </div>
-              <button className="mt-8 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+              <Link href="/dashboard">
+              <Button className="mt-8 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
                 Ver Todas as Conquistas
-              </button>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
