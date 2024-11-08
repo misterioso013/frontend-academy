@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { Youtube, Instagram, GithubIcon } from 'lucide-react'
+import Link from 'next/link'
 export function Footer() {
     const [email, setEmail] = useState('')
 
@@ -21,24 +22,24 @@ export function Footer() {
             <div>
               <h3 className="text-xl font-semibold mb-4">Links Úteis</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:text-blue-400 transition duration-300">Contato</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition duration-300">Fórum</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition duration-300">Política de Privacidade</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition duration-300">Termos de Uso</a></li>
+                <li><Link href="/contact" className="hover:text-blue-400 transition duration-300">Contato</Link></li>
+                <li><Link href="https://forum.vemser.tech" target='_blank' className="hover:text-blue-400 transition duration-300">Fórum</Link></li>
+                <li><Link href="/info" className="hover:text-blue-400 transition duration-300">Política de Privacidade</Link></li>
+                <li><Link href="/info" className="hover:text-blue-400 transition duration-300">Termos de Uso</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-4">Siga-nos</h3>
               <div className="flex space-x-4">
-                <a href="#" className="text-white hover:text-blue-400 transition duration-300">
+                <Link href="https://www.youtube.com/@rosielvictor" target='_blank' className="text-white hover:text-blue-400 transition duration-300">
                   <Youtube className="h-6 w-6" />
-                </a>
-                <a href="#" className="text-white hover:text-blue-400 transition duration-300">
+                </Link>
+                <Link href="https://github.com/misterioso013" target="_blank" className="text-white hover:text-blue-400 transition duration-300">
                   <GithubIcon className="h-6 w-6" />
-                </a>
-                <a href="#" className="text-white hover:text-blue-400 transition duration-300">
+                </Link>
+                <Link href="https://instagram.com/rosielvictor" target="_blank" className="text-white hover:text-blue-400 transition duration-300">
                   <Instagram className="h-6 w-6" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

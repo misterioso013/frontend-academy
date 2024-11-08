@@ -7,10 +7,9 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useHotkeys } from "react-hotkeys-hook";
 import Link from "next/link";
 import EditorComponent from "@/components/editor-component";
-import { Loader2, Play, Code, FileCode, Coffee, Settings, X } from "lucide-react";
+import { Loader2, Play, Code, FileCode, Coffee, Settings, X, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -21,7 +20,10 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
+} from "@/components/ui/drawer";
+import { useSearchParams } from 'next/navigation';
+import { Input } from "@/components/ui/input";
+import { ChatWeb } from "@/components/chat-web";
 
 export default function EditorWeb() {
   const [html, setHtml] = useState<string>(
@@ -41,7 +43,13 @@ export default function EditorWeb() {
   );
 
   const [srcDoc, setSrcDoc] = useState<string>("");
-  const [activeTab, setActiveTab] = useState<"html" | "css" | "js">("html");
+  const searchParams = useSearchParams();
+  const activeTabChat = searchParams.get('chat'); // Obtém o parâmetro 'chat' da URL
+  const hasChat = activeTabChat !== null; // Verifica se o parâmetro 'chat' existe
+
+  const [activeTab, setActiveTab] = useState<"html" | "css" | "js" | "chat">(
+    hasChat ? "chat" : "html"
+  );
   const [liveReload, setLiveReload] = useState<boolean>(true);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
@@ -82,17 +90,13 @@ export default function EditorWeb() {
     updateSrcDoc();
   }, [updateSrcDoc]);
 
-  useHotkeys(
-    "ctrl+s",
-    (event) => {
-      event.preventDefault();
-      if (!liveReload) {
-        handleExecute();
-      }
-    },
-    [liveReload, handleExecute],
-    { preventDefault: true }
-  );
+  // Definir as abas dinamicamente
+  const tabs = [
+    ...(hasChat ? [{ key: "chat", icon: <Bot className="h-4 w-4 mr-2" /> }] : []),
+    { key: "html", icon: <FileCode className="h-4 w-4 mr-2" /> },
+    { key: "css", icon: <Code className="h-4 w-4 mr-2" /> },
+    { key: "js", icon: <Coffee className="h-4 w-4 mr-2" /> },
+  ];
 
   return (
     <div className="h-screen pb-4 flex flex-col bg-gray-100 dark:bg-gray-900">
@@ -144,13 +148,13 @@ export default function EditorWeb() {
           <Tooltip>
             <TooltipTrigger asChild>
               <div>
-              <Button onClick={handleExecute} variant="default" size="sm" className="hidden md:flex">
-                <Play className="h-4 w-4 mr-2" />
-                Executar
-              </Button>
-              <Drawer>
+                <Button onClick={handleExecute} variant="default" size="sm" className="hidden md:flex">
+                  <Play className="h-4 w-4 mr-2" />
+                  Executar
+                </Button>
+                <Drawer>
                   <DrawerTrigger onClick={handleExecute} className="md:hidden flex items-center bg-gray-200 dark:bg-gray-800 p-3 rounded-full">
-                        <Play className="h-4 w-4" />
+                    <Play className="h-4 w-4" />
                   </DrawerTrigger>
                   <DrawerContent className="h-full">
                     <DrawerHeader className="bg-gray-50 dark:bg-gray-800 flex items-center justify-between p-2">
@@ -167,7 +171,7 @@ export default function EditorWeb() {
                       height="100%"
                     />
                   </DrawerContent>
-              </Drawer>
+                </Drawer>
               </div>
             </TooltipTrigger>
             <TooltipContent>
@@ -184,14 +188,10 @@ export default function EditorWeb() {
           <div className="h-full flex flex-col">
             {/* Abas */}
             <div className="flex border-b bg-gray-50 dark:bg-gray-800">
-              {[
-                { key: "html", icon: <FileCode className="h-4 w-4 mr-2" /> },
-                { key: "css", icon: <Code className="h-4 w-4 mr-2" /> },
-                { key: "js", icon: <Coffee className="h-4 w-4 mr-2" /> },
-              ].map(({ key, icon }) => (
+              {tabs.map(({ key, icon }) => (
                 <Button
                   key={key}
-                  onClick={() => setActiveTab(key as "html" | "css" | "js")}
+                  onClick={() => setActiveTab(key as "html" | "css" | "js" | "chat")}
                   variant={activeTab === key ? "default" : "ghost"}
                   className="flex-1 rounded-none"
                 >
@@ -201,29 +201,43 @@ export default function EditorWeb() {
               ))}
             </div>
 
-            {/* Editor */}
+            {/* Editor ou Chat */}
             <div className="flex-1 relative overflow-hidden">
               <AnimatePresence mode="wait">
-                {["html", "css", "js"].map((tab) => (
-                  activeTab === tab && (
+                {tabs.map((tab) => (
+                  activeTab === tab.key && (
                     <motion.div
-                      key={tab}
+                      key={tab.key}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.2 }}
                       className="absolute inset-0"
                     >
-                      <EditorComponent
-                        language={tab === "js" ? "javascript" : tab}
-                        value={tab === "html" ? html : tab === "css" ? css : js}
-                        onChange={tab === "html" ? setHtml : tab === "css" ? setCss : setJs}
-                        loading={
-                          <div className="flex items-center justify-center h-full">
-                            <Loader2 className="animate-spin h-10 w-10 text-blue-500" />
-                          </div>
-                        }
-                      />
+                      {tab.key === "chat" ? (
+                        <ChatWeb initialMessage={activeTabChat || ""} html={html} css={css} js={js} messages={[]} setHtml={setHtml} setCss={setCss} setJs={setJs} />
+                      ) : (
+                        <EditorComponent
+                          language={tab.key === "js" ? "javascript" : tab.key}
+                          value={
+                            tab.key === "html" ? html :
+                            tab.key === "css" ? css :
+                            tab.key === "js" ? js :
+                            ""
+                          }
+                          onChange={
+                            tab.key === "html" ? setHtml :
+                            tab.key === "css" ? setCss :
+                            tab.key === "js" ? setJs :
+                            () => {}
+                          }
+                          loading={
+                            <div className="flex items-center justify-center h-full">
+                              <Loader2 className="animate-spin h-10 w-10 text-blue-500" />
+                            </div>
+                          }
+                        />
+                      )}
                     </motion.div>
                   )
                 ))}
